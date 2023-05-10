@@ -21,7 +21,11 @@
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 import HomePage from "./pages/Home";
 
-const test = "abbcd";
+const router = createbrowserrouter([
+  { path: "/", Element: <HomePage /> },
+  { path: "/events", Element: <EventsPage /> },
+  { path: "/events/:eventId", Element: <EventDetailPage /> },
+]);
 function App() {
   return <div></div>;
 }
