@@ -26,6 +26,7 @@ const router = createbrowserrouter([
   { path: "/events", Element: <EventsPage /> },
   { path: "/events/:eventId", Element: <EventDetailPage /> },
   { path: "events/new", Element: <NewEventsPage /> },
+  { path: "events/:eventId/edit", Element: <EditEventPage /> },
 ]);
 function App() {
   return <div></div>;
