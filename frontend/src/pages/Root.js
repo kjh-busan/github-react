@@ -1,6 +1,6 @@
 import React from "react";
 import MainNavigation from "./components/MainNavigation";
-import Outlet from "./components/Outlet";
+import { Outlet } from "react-route-dom";
 
 export default function RootLayout() {
   return (
