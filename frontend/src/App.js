@@ -29,7 +29,7 @@ const router = createbrowserrouter([
   { path: "events/:eventId/edit", Element: <EditEventPage /> },
 ]);
 function App() {
-  return <div></div>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
