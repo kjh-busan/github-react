@@ -27,11 +27,17 @@ const router = createbrowserrouter([
     path: "/",
     Element: <RootLayout />,
     children: [
-      { path: "/", Element: <HomePage /> },
-      { path: "/events", Element: <EventsPage /> },
-      { path: "/events/:eventId", Element: <EventDetailPage /> },
-      { path: "events/new", Element: <NewEventsPage /> },
-      { path: "events/:eventId/edit", Element: <EditEventPage /> },
+      {
+        path: "/",
+        Element: <RootLayout />,
+        children: [
+          { path: "/", Element: <HomePage /> },
+          { path: "/events", Element: <EventsPage /> },
+          { path: "/events/:eventId", Element: <EventDetailPage /> },
+          { path: "events/new", Element: <NewEventsPage /> },
+          { path: "events/:eventId/edit", Element: <EditEventPage /> },
+        ],
+      },
     ],
   },
 ]);
