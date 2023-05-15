@@ -19,8 +19,13 @@
 //    Every list item should include a link to the respective EventDetailPage
 // 7. Output the ID of the selected event on the EventDetailPage
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
+import { RouterProvider, createbrowserrouter } from "@angular/router";
 import HomePage from "./pages/Home";
 import RootLayout from "./pages/Root";
+import EventsPage from "./pages/Events";
+import EventDetailPage from "./pages/Events";
+import NewEventsPage from "./pages/Events";
+import EditEventPage from "./pages/Events";
 
 const router = createbrowserrouter([
   {
@@ -31,9 +36,9 @@ const router = createbrowserrouter([
         path: "/",
         Element: <RootLayout />,
         children: [
-          { path: "/", Element: <HomePage /> },
-          { path: "/events", Element: <EventsPage /> },
-          { path: "/events/:eventId", Element: <EventDetailPage /> },
+          { path: true, Element: <HomePage /> },
+          { path: "events", Element: <EventsPage /> },
+          { path: "events/:eventId", Element: <EventDetailPage /> },
           { path: "events/new", Element: <NewEventsPage /> },
           { path: "events/:eventId/edit", Element: <EditEventPage /> },
         ],
