@@ -1,5 +1,12 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 export default function EventDetail() {
-  return <div>EventDetail</div>;
+  const params = useParams();
+  return (
+    <>
+      <div>EventDetail</div>
+      <p>Event ID: {params.eventId}</p>
+    </>
+  );
 }
