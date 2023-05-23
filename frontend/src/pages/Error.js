@@ -9,7 +9,7 @@ export default function ErrorPage() {
   let message = "Somthing went wrong!";
 
   if (error.status === 500) {
-    message = error.data.message;
+    message = JSON.parse(error.data).message;
   }
 
   if (error.status === 404) {
@@ -19,7 +19,7 @@ export default function ErrorPage() {
 
   return (
     <PageContent title={title}>
-      <p>Something went wrong!</p>
+      <p>{message}</p>
     </PageContent>
   );
 }
