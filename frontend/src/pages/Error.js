@@ -8,9 +8,18 @@ export default function ErrorPage() {
   let title = "An error occurered!";
   let message = "Somthing went wrong!";
 
+  if (error.status === 500) {
+    message = error.data.message;
+  }
+
+  if (error.status === 404) {
+    title = "Not Found!";
+    message = "Could not find";
+  }
+
   return (
-    <PageContent title="An error occurered!">
-      <p></p>
+    <PageContent title={title}>
+      <p>Something went wrong!</p>
     </PageContent>
   );
 }
