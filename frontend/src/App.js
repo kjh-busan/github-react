@@ -27,11 +27,13 @@ import EventDetailPage from "./pages/Events";
 import NewEventsPage from "./pages/Events";
 import EditEventPage from "./pages/Events";
 import EventsRootLayout from "./pages/EventsRoot";
+import ErrorPage from "./pages/Error";
 
 const router = createbrowserrouter([
   {
     path: "/",
     Element: <RootLayout />,
+    errorElement: <ErrorPage />
     children: [
       {
         path: "/",
@@ -45,6 +47,7 @@ const router = createbrowserrouter([
               {
                 index: true,
                 Element: <EventsPage />,
+                errorElement: <ErrorPage/>,
                 loader: async () => {
                   const response = await fetch("http://localhost:8080/events");
 
