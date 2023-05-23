@@ -6,6 +6,9 @@ function EventsPage() {
   const data = useLoaderData();
   const events = data.events;
 
+  if (data.isError) {
+    return <p>{data.message}</p>;
+  }
   return <EventsList events={events} />;
 }
 
@@ -15,7 +18,7 @@ export async function loader() {
   const response = await fetch("http://localhost:8080/events");
 
   if (!response.ok) {
-    // setError("Fetching events failed.");
+    return { isError: true, message: "Could not load events." };
   } else {
     const resData = await response.json();
     return resData;
