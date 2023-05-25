@@ -19,7 +19,8 @@ export async function loader() {
 
   if (!response.ok) {
     // return { isError: true, message: "Could not load events." };
-    throw new Response(JSON.stringify({ message: "Could not load events." }));
+    // throw new Response(JSON.stringify({ message: "Could not load events." }));
+    return json({ message: "Could not load events." }, { status: 500 });
   } else {
     const resData = await response.json();
     return resData;
