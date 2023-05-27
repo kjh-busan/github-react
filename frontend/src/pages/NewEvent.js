@@ -1,5 +1,10 @@
 import EventForm from "../components/EventForm";
 
-export default function NewEvent() {
+function NewEventPage() {
+  function submitHandler(event) {
+    event.preventDefault();
+  }
+
   return <EventForm />;
 }
+export default NewEventPage;
