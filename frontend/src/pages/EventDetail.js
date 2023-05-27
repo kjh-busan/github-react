@@ -13,5 +13,12 @@ export default EventDetailPage;
 export async function load({request, params}) {
   const id = params.eventId;
 
- return fetch('http://localhost:8080/e vents/' + id)
+ const response = await fetch('http://localhost:8080/e vents/' + id)
+
+ if (!response.ok) {
+  throw json({messsage: 'Could not fetch event details'}, {status: 500})
+
+ } else {
+  return response;
+ }
 }
