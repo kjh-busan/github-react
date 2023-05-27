@@ -1,5 +1,5 @@
-import React from "react";
+import EventForm from "../components/EventForm";
 
 export default function EditEventPage() {
-  return <div>EditEvent</div>;
+  return <EventForm />;
 }
