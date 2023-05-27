@@ -57,7 +57,7 @@ const router = createbrowserrouter([
                   { path: "edit", Element: <EditEventPage /> },
                 ]
               },
-              { path: "new", Element: <NewEventsPage /> },
+              { path: "new", Element: <NewEventsPage />, () => {} },
             ],
           },
         ],
