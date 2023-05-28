@@ -1,3 +1,4 @@
+import { json } from "react-router-dom";
 import EventForm from "../components/EventForm";
 
 function NewEventPage() {
@@ -9,8 +10,7 @@ function NewEventPage() {
 }
 export default NewEventPage;
 
-
-export async function action({request, params}) {
+export async function action({ request, params }) {
   const data = await request.formData();
 
   const eventData = {
@@ -26,4 +26,8 @@ export async function action({request, params}) {
     },
     body: JSON.stringify(eventData),
   });
+
+  if (!response.ok) {
+    throw json({ message: "Could not find event" }, { status: 500 });
+  }
 }
