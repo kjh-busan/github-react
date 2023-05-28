@@ -1,4 +1,4 @@
-import { json } from "react-router-dom";
+import { redirect, json } from "react-router-dom";
 import EventForm from "../components/EventForm";
 
 function NewEventPage() {
@@ -30,4 +30,6 @@ export async function action({ request, params }) {
   if (!response.ok) {
     throw json({ message: "Could not find event" }, { status: 500 });
   }
+
+  return redirect("/events");
 }
