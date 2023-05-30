@@ -3,6 +3,8 @@ import {
   useNavigate,
   useNavigation,
   useActionData,
+  redirect,
+  json,
 } from "react-router-dom";
 
 import classes from "./EventForm.module.css";
@@ -86,7 +88,15 @@ export async function action({ request, params }) {
     date: data.get("date"),
     description: data.get("description"),
   };
-  const response = await fetch("http://localhost:8080/events/", {
+
+  let url = "http://localhost:8080/events/";
+
+  if (method === "patch") {
+    const eventId = params.eventId;
+    url = "http://localhost:8080/events/" + eventId;
+  }
+
+  const response = await fetch(url, {
     method: method,
     headers: {
       "Content-Type": "application/json",

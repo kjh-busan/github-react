@@ -1,4 +1,3 @@
-import { redirect, json } from "react-router-dom";
 import EventForm from "../components/EventForm";
 
 function NewEventPage() {
