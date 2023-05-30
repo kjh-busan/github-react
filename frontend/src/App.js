@@ -53,7 +53,7 @@ const router = createbrowserrouter([
                 path: ':eventId',
                 id: 'event-detail',
                 children: [
-                  { index: true, Element: <EventDetailPage />, loader: eventDetailLoader  },
+                  { index: true, Element: <EventDetailPage />, loader: eventDetailLoader , action: ''},
                   { path: "edit", Element: <EditEventPage /> },
                 ]
               },
