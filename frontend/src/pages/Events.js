@@ -5,9 +5,11 @@ import EventsList from "../components/EventsList";
 function EventsPage() {
   const { events } = useLoaderData();
   return (
-    <Await resolve={events}>
-      {(loaderEvents) => <EventsList events={loaderEvents}></EventsList>}
-    </Await>
+    <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
+      <Await resolve={events}>
+        {(loaderEvents) => <EventsList events={loaderEvents}></EventsList>}
+      </Await>
+    </Suspense>
   );
 }
 export default EventsPage;
