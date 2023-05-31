@@ -19,7 +19,7 @@ async function loaderEvents() {
   const response = await fetch("http://localhost:8080/events");
 
   if (!response.ok) {
-    throw Error("Fetching events failed.");
+    throw json({ message: "Fetching events failed." }, { status: 500 });
   } else {
     return response;
   }
