@@ -1,11 +1,24 @@
 import React from "react";
-import { useRouteLoaderData, json } from "react-router-dom";
+import {
+  useRouteLoaderData,
+  json,
+  redirect,
+  defer,
+  Await,
+} from "react-router-dom";
 import EventItem from "../components/EventItem";
+import EventsList from "../components/EventsList";
 
 function EventDetailPage() {
-  const data = useRouteLoaderData("event-detail");
+  const { event, events } = useRouteLoaderData("event-detail");
   return (
     <>
+      <Await resolve={event}>
+        {(loaderdEvent) => <EventItem event={loadedEvent} />}
+      </Await>
+      <Await resolve={events}>
+        {(loadedEvents) => <EventsList events={loadedEvents} />}
+      </Await>
       <EventItem EventItem event={data.event} />
       <EventsList events={data.events} />
     </>
@@ -24,11 +37,12 @@ async function loadEvent(id) {
     return resData.events;
   }
 }
-export async function load({ request, params }) {
+export async function loader({ request, params }) {
   const id = params.eventId;
 
-  const response = await fetch("http://localhost:8080/e vents/" + id, {
-    method: request.method,
+  return defer({
+    event: loadEvent(id),
+    events: loadEvents(),
   });
 }
 
