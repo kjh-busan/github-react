@@ -1,4 +1,4 @@
-import React from "react";
+import { Suspense } from "react";
 import {
   useRouteLoaderData,
   json,
@@ -13,14 +13,16 @@ function EventDetailPage() {
   const { event, events } = useRouteLoaderData("event-detail");
   return (
     <>
-      <Await resolve={event}>
-        {(loaderdEvent) => <EventItem event={loadedEvent} />}
-      </Await>
-      <Await resolve={events}>
-        {(loadedEvents) => <EventsList events={loadedEvents} />}
-      </Await>
-      <EventItem EventItem event={data.event} />
-      <EventsList events={data.events} />
+      <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
+        <Await resolve={event}>
+          {(loaderdEvent) => <EventItem event={loadedEvent} />}
+        </Await>
+        <Await resolve={events}>
+          {(loadedEvents) => <EventsList events={loadedEvents} />}
+        </Await>
+        <EventItem EventItem event={data.event} />
+        <EventsList events={data.events} />
+      </Suspense>
     </>
   );
 }
