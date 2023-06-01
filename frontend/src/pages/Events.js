@@ -20,8 +20,10 @@ async function loaderEvents() {
 
   if (!response.ok) {
     throw json({ message: "Fetching events failed." }, { status: 500 });
-  } else {
-    return response;
+  }
+   else {
+    const resData = await response.json();
+    return resData.events;
   }
   // setIsLoading(false);
   // fetchEvents();
