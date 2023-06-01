@@ -20,7 +20,8 @@ async function loadEvent(id) {
   if (!response.ok) {
     throw json({ messsage: "Could not fetch event details" }, { status: 500 });
   } else {
-    return response;
+    const resData = await response.json();
+    return resData.events;
   }
 }
 export async function load({ request, params }) {
